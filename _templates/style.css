@@ -39,7 +39,8 @@ html, body {
 .content-code {
     background-color: dimgray;
     padding: 15px 5px;
-    margin: 5px 0;
+    width: 70%;
+    margin: 5px auto;
     font-size: 11pt;
     border: 0 solid blue;
     border-left-width: 3px;
@@ -52,8 +53,7 @@ html, body {
     font-family: monospace;
     color: white;
     margin: 5px 0;
-    height: fit-content;
-    line-height: 1;
+    overflow: auto;
 }
 
 .nav-bar {
@@ -160,7 +160,6 @@ html, body {
 .nav-dropdown-content {
     display: block;
     padding-left: 19px;
-    background-color: gray;
     max-height: 0;
     overflow: hidden;
     line-height: 0;
@@ -175,15 +174,6 @@ html, body {
 
 .nav-link:hover {
     background-color: #989898;
-}
-
-.nav-checkbox:checked ~.nav-bar-dropdown-container > .nav-label:hover {
-    background-color: #4f4f4f;
-    cursor: pointer;
-}
-
-.nav-checkbox:checked ~ .nav-bar-dropdown-container {
-    background-color: gray;
 }
 
 .nav-checkbox:checked ~ .nav-bar-dropdown-container > .nav-label > .nav-dropdown-label-span::before {
