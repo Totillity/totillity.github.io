@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book</title>
+    
+        <link rel='stylesheet' href='style.css'>
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <div id="nav-title-container">
+            <div id="nav-title">Navigation</div>
+        </div>
+
+        <hr>
+
+        <div class="nav-list">
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/index.html">Contents</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <input type="checkbox" class="nav-checkbox" id="nav-checkbox-1-{loop.index}}">
+                    <div class="nav-bar-dropdown-container">
+                        <label class="nav-label" for="nav-checkbox-1-{loop.index}}">
+                            <span class="nav-dropdown-label-span">
+                                JIT Project
+                            </span>
+                        </label>
+                    </div>
+                    <div class="nav-dropdown-content">
+                        
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/home.html">Home</a>
+                
+                </div>
+            
+                    </div>
+                
+                </div>
+            
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            
+                
+                    <div class="content-title">
+                        <header>Introduction</header>
+                    </div>
+                    <hr>
+                
+            
+                
+                    <div class="content-paragraph">
+                        <p>
+Before you read this, you should know what I mean for this book to be. It is intended as a repository of the information
+I have gathered on making programming languages. While that is much more than I started with, it's not even close to everything.
+There's a <i>lot</i> more out there. Like a <i>lot</i>. For example, I don't cover what Rust and related languages do
+to ensure that all memory is accounted for before you even run your program, because I've never implemented such a system.
+I don't cover
+</p>
+                    </div>
+                
+            
+                
+                    <div class="content-code"><pre>
+def fibo(n: int) -> int {
+    if (n < 2) {
+        return n;
+    } else {
+        return fibo(n-1) + fibo(n-2);
+    }
+}
+</pre></div>
+                
+            
+        </div>
+    </div>
+    <div class="right-content">right</div>
+</body>
+</html>

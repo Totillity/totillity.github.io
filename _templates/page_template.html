@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book</title>
+    {% if False %}
+        <link rel="stylesheet" href="style.css">
+    {% else %}
+        {{style_link}}
+    {% endif %}
+</head>
+<body>
+    <div class="nav-bar">
+        <div id="nav-title-container">
+            <div id="nav-title">Navigation</div>
+        </div>
+
+        <hr>
+
+        <div class="nav-list">
+            {% for name, node in nav_tree recursive %}
+                <div class="nav-bar-item">
+                {% if node is mapping %}
+                    <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{loop.index}}">
+                    <div class="nav-bar-dropdown-container">
+                        <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{loop.index}}">
+                            <span class="nav-dropdown-label-span">
+                                {{name}}
+                            </span>
+                        </label>
+                    </div>
+                    <div class="nav-dropdown-content">
+                        {{loop(node.items())}}
+                    </div>
+                {% else %}
+                    <a class="nav-link" href="{{node}}">{{ name }}</a>
+                {% endif%}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            {% for element in elements %}
+                {% if element.type == "Paragraph" %}
+                    <div class="content-paragraph">
+                        <p>{{element.text}}</p>
+                    </div>
+                {% elif element.type == "Title" %}
+                    <div class="content-title">
+                        <header>{{element.title_text}}</header>
+                    </div>
+                    <hr>
+                {% elif element.type == "Code" %}
+                    <div class="content-code"><pre>{{element.code}}</pre></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="right-content">right</div>
+</body>
+</html>

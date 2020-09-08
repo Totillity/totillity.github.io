@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    border: 0;
+    margin: 0;
+}
+
+.content-container {
+    margin-left: 20%;
+    width: 65%;
+    float: left;
+    padding: 20px 20px;
+
+    background-color: #fcfcfc;
+}
+
+.content-paragraph {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 1.3em;
+}
+
+.content-title {
+    width: fit-content;
+    margin: 10% auto ;
+    font-size: 5.2em;
+}
+
+.content-title ~ hr {
+    margin: 0.5em auto calc(0.5em + 10%) auto;
+}
+
+.content-code {
+    background-color: dimgray;
+    padding: 15px 5px;
+    margin: 5px 0;
+    font-size: 11pt;
+    border: 0 solid blue;
+    border-left-width: 3px;
+
+    border-radius: 7px;
+}
+
+.content-code pre {
+    display: block;
+    font-family: monospace;
+    color: white;
+    margin: 5px 0;
+    height: fit-content;
+    line-height: 1;
+}
+
+.nav-bar {
+    width: 20%;
+    float: left;
+
+    margin: 0;
+    height: 100%;
+    position: fixed;
+
+    background-color: bisque;
+}
+
+#nav-title-container {
+    text-align: center;
+}
+
+#nav-title {
+    display: inline-block;
+    margin: 10px 0;
+    font-size: 25px;
+}
+
+
+.nav-bar hr {
+    margin: 0;
+    color: black;
+}
+
+.nav-list {
+    padding-top: 10px;
+
+    user-select: none;
+    font-size: 20px;
+}
+
+.nav-bar-item {
+    width: 100%;
+    line-height: 0;
+    font-size: 0;
+}
+
+.nav-bar-link-container {
+    font-size: 25px;
+    line-height: 1;
+
+    background-color: white;
+    padding-left: 20px;
+}
+
+.nav-link {
+    background-color: white;
+    line-height: 1;
+    font-size: 25px;
+
+    padding-left: 19px;
+
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-link::before {
+    content: "\2BC8";
+    font-size: 18px;
+    padding-right: 4px;
+}
+
+
+.nav-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.nav-bar-dropdown-container {
+    font-size: 25px;
+    line-height: 1;
+
+    background-color: white;
+}
+
+.nav-label {
+    display: inline-block;
+    width: 100%;
+    padding-left: 20px;
+
+    line-height: 1;
+}
+
+.nav-dropdown-label-span {
+    width: 100%;
+}
+
+.nav-dropdown-label-span::before {
+    content: "\002B";
+    display: inline-block;
+    transition: 0.4s;
+}
+
+.nav-dropdown-content {
+    display: block;
+    padding-left: 19px;
+    background-color: gray;
+    max-height: 0;
+    overflow: hidden;
+    line-height: 0;
+    font-size: 0;
+}
+
+
+.nav-label:hover {
+    background-color: #989898;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: #989898;
+}
+
+.nav-checkbox:checked ~.nav-bar-dropdown-container > .nav-label:hover {
+    background-color: #4f4f4f;
+    cursor: pointer;
+}
+
+.nav-checkbox:checked ~ .nav-bar-dropdown-container {
+    background-color: gray;
+}
+
+.nav-checkbox:checked ~ .nav-bar-dropdown-container > .nav-label > .nav-dropdown-label-span::before {
+    content: "\2212";
+}
+
+.nav-checkbox:checked ~ .nav-bar-dropdown-container > .nav-dropdown-content {
+    max-height: 50px;
+}
+
+
+.right-content {
+    width: 15%;
+    float: left;
+
+    margin-left: 85%;
+    height: 100%;
+    position: fixed;
+
+    background-color: #f0f0f0;
+}
