@@ -33,7 +33,50 @@ def get_pages(files: List[IO]) -> List[Page]:
     return to_render
 
 
-def render_page(env: jinja2.Environment, page: Page, tree: Dict[str, Any]):
+class NavNode:
+    def __init__(self, is_leaf: bool):
+        self.is_leaf = is_leaf
+
+
+class NavTree(NavNode):
+    def __init__(self, dir_name: str, children: List[NavNode]):
+        super().__init__(False)
+        self.dir_name = dir_name
+        self.children = children
+        self.reachable: List[Path] = []
+
+    def get_child_dir(self, dir_name: str):
+        for child in self.children:
+            if isinstance(child, NavTree):
+                if child.dir_name == dir_name:
+                    return child
+        raise KeyError(dir_name)
+
+    def add_reachable_path(self, path: Path):
+        self.reachable.append(path)
+
+    def create_child_tree(self, dir_name: str):
+        self.children.append(NavTree(dir_name, []))
+
+    def create_child_leaf(self, leaf_name: str, leaf_path: str):
+        self.children.append(NavLeaf(leaf_name, leaf_path))
+
+    def has_child_dir(self, dir_name: str):
+        for child in self.children:
+            if isinstance(child, NavTree):
+                if child.dir_name == dir_name:
+                    return True
+        return False
+
+
+class NavLeaf(NavNode):
+    def __init__(self, leaf_name: str, path: str):
+        super().__init__(True)
+        self.leaf_name = leaf_name
+        self.path = path
+
+
+def render_page(env: jinja2.Environment, page: Page, tree: NavTree):
     template = env.get_template("page_template.html")
 
     page.path.parent.mkdir(exist_ok=True, parents=True)
@@ -44,7 +87,8 @@ def render_page(env: jinja2.Environment, page: Page, tree: Dict[str, Any]):
     page.path.write_text(template.render(
         elements=page.elements,
         style_link=f"<link rel='stylesheet' href='{style_link}'>",
-        nav_tree=tree.items(),
+        nav_tree=tree,
+        page_path=page.path
     ))
 
 
@@ -56,15 +100,19 @@ def main():
     )
 
     Path("style.css").write_text(env.get_template("style.css").render())
-    nav_tree = {}
-    for page in pages:
-        sub_tree = nav_tree
-        for item in page.nav_loc[:-1]:
-            if item not in sub_tree:
-                sub_tree[item] = {}
-            sub_tree = sub_tree[item]
 
-        sub_tree[page.nav_loc[-1]] = str(page.path).replace("\\", "/")
+    nav_tree = NavTree("root", [])
+    for page in pages:
+        # create or navigate to each directory needed to get to the page from root
+        sub_tree = nav_tree
+        sub_tree.add_reachable_path(page.path)
+        for part in page.nav_loc[:-1]:
+            if not sub_tree.has_child_dir(part):
+                sub_tree.create_child_tree(part)
+            sub_tree = sub_tree.get_child_dir(part)
+            sub_tree.add_reachable_path(page.path)
+        # now sub_tree is the parent directory of the page
+        sub_tree.create_child_leaf(page.nav_loc[-1], str(page.path).replace("\\", "/"))
 
     for page in pages:
         render_page(env, page, nav_tree)

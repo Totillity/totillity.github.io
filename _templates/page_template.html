@@ -19,22 +19,26 @@
         <hr>
 
         <div class="nav-list">
-            {% for name, node in nav_tree recursive %}
+            {% for node in nav_tree.children recursive %}
                 <div class="nav-bar-item">
-                {% if node is mapping %}
-                    <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{loop.index}}">
+                {% if not node.is_leaf %}
+                    {% if page_path in node.reachable %}
+                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}" checked="checked">
+                    {% else %}
+                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}">
+                    {% endif %}
                     <div class="nav-bar-dropdown-container">
-                        <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{loop.index}}">
+                        <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{{loop.index}}">
                             <span class="nav-dropdown-label-span">
-                                {{name}}
+                                {{node.dir_name}}
                             </span>
                         </label>
                         <div class="nav-dropdown-content">
-                            {{loop(node.items())}}
+                            {{loop(node.children)}}
                         </div>
                     </div>
                 {% else %}
-                    <a class="nav-link" href="/{{node}}">{{ name }}</a>
+                    <a class="nav-link" href="/{{node.path}}">{{node.leaf_name}}</a>
                 {% endif%}
                 </div>
             {% endfor %}

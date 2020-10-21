@@ -5,8 +5,18 @@ from pathlib import Path
 from typing import List
 
 
-def italics(s: str):
+def italics(s: str) -> str:
     return f"<i>{s}</i>"
+
+
+def hyperlink(s: str, link_to: str = None) -> str:
+    if link_to is None:
+        link_to = s
+    return f'<a href="{link_to}">{s}</a>'
+
+
+def inline_code(s: str) -> str:
+    return f"<code>{s}</code>"
 
 
 class Page:
