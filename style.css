@@ -197,7 +197,7 @@ html, body {
 }
 
 .nav-checkbox:checked ~ .nav-bar-dropdown-container > .nav-dropdown-content {
-    max-height: 50px;
+    max-height: none;
 }
 
 

@@ -29,7 +29,7 @@
                     <div class="nav-bar-dropdown-container">
                         <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{{loop.index}}">
                             <span class="nav-dropdown-label-span">
-                                {{node.dir_name}}
+                                {{node.nav_name}}
                             </span>
                         </label>
                         <div class="nav-dropdown-content">
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 {% else %}
-                    <a class="nav-link" href="/{{node.path}}">{{node.leaf_name}}</a>
+                    <a class="nav-link" href="/{{node.path}}">{{node.nav_name}}</a>
                 {% endif%}
                 </div>
             {% endfor %}
