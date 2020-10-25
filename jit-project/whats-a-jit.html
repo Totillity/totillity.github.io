@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book</title>
+    
+        <link rel='stylesheet' href='../style.css'>
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <div id="nav-title-container">
+<!--            <div id="nav-title">Navigation</div>-->
+            <img src="/Logo.svg" id="nav-img">
+        </div>
+
+        <div class="nav-list">
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/index.html">Contents</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    
+                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-1-2" checked="checked">
+                    
+                    <div class="nav-bar-dropdown-container">
+                        <label class="nav-label" for="nav-checkbox-1-2">
+                            <span class="nav-dropdown-label-span">
+                                JIT Project
+                            </span>
+                        </label>
+                        <div class="nav-dropdown-content">
+                            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/whats-a-jit.html">What's a JIT?</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/about.html">About</a>
+                
+                </div>
+            
+                        </div>
+                    </div>
+                
+                </div>
+            
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            <div class="content-title"><header>What's a JIT?</header></div><hr><div class="content-paragraph"><p>
+A JIT is a "Just in Time" compiler.
+</p></div><div class="content-paragraph"><p>
+Let's start by explaining how computers work. In the center of your computer is a CPU, a central processing unit.
+This CPU is a intricate tangle of transistors and wires that all serve to execute the code stored on your computer.
+The code that the CPU executes is called "Machine Code". It is a very different type of code than what people usually program in.
+While normal programming languages like Python and Haskell are typically written and stored on the computer as text, 
+machine code is stored entirely in raw bytes (although you can generate it using a textual medium). For example, 
+here's a example of a program in machine code that would square a number in hex: 
+</p></div><div class="content-code"><pre>55 48 89 E5 89 7D FC 8B 45 FC 0F AF C0 5D C3</pre></div><div class="content-paragraph"><p>
+Luckily, we can output machine code without having to write each individual byte, using a tool called assembly.
+Assembly's whole purpose is that a special tool called an assembler can convert it into machine code. 
+Why do we need to go to all these lengths to make programs which can run on a CPU?
+A CPU cannot run code in any other way than machine code for two reasons.
+</p></div><div class="content-paragraph"><p>
+First, the realities of computer hardware are much different than what Python, Java, Haskell, or even C will pretend.
+One common trait those languages all share is that they pretend that we have infinite places to store things, and that 
+all things are stored in the same place. While that is a useful way to reason about things since it makes writing programs
+easier, machine code is the level in which we have to acknowledge that the above abstractions are just that, abstractions.  
+</p></div><div class="content-paragraph"><p>
+Python will pretend that you can have infinite variables and objects just 'exist'. In reality, computer have limited memory,
+and that the object has to go <i>somewhere</i> in that memory, and we need to keep track of where that memory is.
+In addition, modern computers have multiple levels of memory, each of which is progressively smaller in size but faster in speed 
+than the last.
+</p></div><div class="content-paragraph"><p>
+Some further reading and bibliography:
+</p></div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p>An online assembler to make machine code from assembly: <a href="https://defuse.ca/online-x86-assembler.htm#disassembly">https://defuse.ca/online-x86-assembler.htm#disassembly</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Godbolt, an online C compiler that converts your C code into assembly. You can use it in conjunction with the online assembler to see how some C code will convert into assembly: <a href="https://godbolt.org/">https://godbolt.org/</a></p></div></li></ol>
+        </div>
+    </div>
+    <div class="right-content"></div>
+</body>
+</html>
