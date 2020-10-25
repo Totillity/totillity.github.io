@@ -146,7 +146,7 @@ html, body {
 }
 
 .nav-link::before {
-    content: "\2BC8";
+    content: "\25BA";
     font-size: 18px;
     padding-right: 4px;
 }
