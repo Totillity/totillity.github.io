@@ -119,7 +119,7 @@ def render_page(env: jinja2.Environment, page: Page, tree: NavTree):
     style_link = str(style_link).replace("\\", "/")
 
     page.path.write_text(template.render(
-        elements=page.elements,
+        page=page,
         style_link=f"<link rel='stylesheet' href='{style_link}'>",
         nav_tree=tree,
         page_path=page.path

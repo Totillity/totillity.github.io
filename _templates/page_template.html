@@ -45,20 +45,7 @@
     </div>
     <div class="content-container">
         <div class="content">
-            {% for element in elements %}
-                {% if element.type == "Paragraph" %}
-                    <div class="content-paragraph">
-                        <p>{{element.text}}</p>
-                    </div>
-                {% elif element.type == "Title" %}
-                    <div class="content-title">
-                        <header>{{element.title_text}}</header>
-                    </div>
-                    <hr>
-                {% elif element.type == "Code" %}
-                    <div class="content-code"><pre>{{element.code}}</pre></div>
-                {% endif %}
-            {% endfor %}
+            {{page.render()}}
         </div>
     </div>
     <div class="right-content"></div>
