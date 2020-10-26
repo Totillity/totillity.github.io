@@ -46,7 +46,7 @@ class NavNode:
     @classmethod
     def get_parts(cls, nav_pos: str) -> Tuple[str, int]:
         if match := cls.order_regex.match(nav_pos):
-            return match.string[match.end():], int(match.group()[1:-1])
+            return match.string[match.end():].strip(), int(match.group()[1:-1])
         else:
             return nav_pos, -1
 

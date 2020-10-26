@@ -1,6 +1,6 @@
 from _generate_site.elements import *
 
-page = Page("jit-project/whats-a-jit.html", nav_loc=["JIT Project", "What's a JIT?"])
+page = Page("jit-project/whats-a-jit.html", nav_loc=["JIT Project", "[1] What's a JIT?"])
 
 
 page += Title("What's a JIT?")
@@ -50,8 +50,6 @@ page += OrderedList([
     Paragraph(f"Godbolt, an online C compiler that converts your C code into assembly. You can use it in conjunction "
               f"with the online assembler to see how some C code will convert into assembly: {hyperlink('https://godbolt.org/')}")
 ])
-
-
 
 
 __pages__ = [page]

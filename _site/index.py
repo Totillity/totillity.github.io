@@ -20,15 +20,5 @@ You can navigate using the dropdown menus on the side. To not get lost, try drop
 click a link, so you can always follow those back to here.
 """)
 
-page += Code("""
-def fibo(n: int) -> int {
-    if (n < 2) {
-        return n;
-    } else {
-        return fibo(n-1) + fibo(n-2);
-    }
-}
-""")
-
 
 __pages__ = [page]

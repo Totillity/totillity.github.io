@@ -124,7 +124,7 @@ html, body {
 }
 
 .nav-bar-link-container {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 1;
 
     background-color: white;
@@ -134,9 +134,9 @@ html, body {
 .nav-link {
     background-color: white;
     line-height: 1.2;
-    font-size: 25px;
+    font-size: 20px;
 
-    padding-left: 19px;
+    padding-left: 9px;
 
     cursor: pointer;
     width: 100%;
@@ -160,7 +160,7 @@ html, body {
 }
 
 .nav-bar-dropdown-container {
-    font-size: 25px;
+    font-size: 20px;
     line-height: 1;
 
     background-color: white;
@@ -169,7 +169,7 @@ html, body {
 .nav-label {
     display: inline-block;
     width: 100%;
-    padding-left: 20px;
+    padding-left: 10px;
 
     line-height: 1.2;
 }
@@ -182,6 +182,8 @@ html, body {
     content: "\002B";
     display: inline-block;
     transition: 0.4s;
+    padding-left: 2px;
+    padding-right: 3px;
 }
 
 .nav-dropdown-content {
