@@ -10,12 +10,25 @@ A JIT is a "Just in Time" compiler.
 """)
 
 page += Paragraph(f"""
-Let's start by explaining how computers work. In the center of your computer is a CPU, a central processing unit.
-This CPU is a intricate tangle of transistors and wires that all serve to execute the code stored on your computer.
-The code that the CPU executes is called "Machine Code". It is a very different type of code than what people usually program in.
-While normal programming languages like Python and Haskell are typically written and stored on the computer as text, 
-machine code is stored entirely in raw bytes (although you can generate it using a textual medium). For example, 
-here's a example of a program in machine code that would square a number in hex: 
+To fully understand what that means and why its useful, we first have to examine how computers work. 
+""")
+
+page += Paragraph(f"""
+In the center of every computer is a processor. This processor can only do it's job if you provide it instructions in a 
+very specific format, "machine code". This limitation exists for a variety of reasons, but to keep it simple, let's just
+say that "machine code" is the best way to encode the reality of how processors physically work.
+""")
+
+page += Paragraph(f"""
+If you're used to programming in anything other than assembly, the way machine code is structured will be alien to you.
+It's all in raw bytes, it doesn't have variables, and to make and call functions, it's much more work than just {inline_code('print("hi")')}.
+All these quirks and some more make writing programs in machine code (or assembly, which is machine code but not in bytes) very hard.
+""")
+
+page += Paragraph(f"""
+The tradeoff here is that machine code programs are very fast. Simple programs like a fibonacci sequence calculator can be over
+100x faster when written in machine code compared to Python. More complex programs, such a neural net for machine learning or
+a n-body simulation are simply not feasible to run in anything but machine code since they need all the speed they can get.
 """)
 
 page += Code("""55 48 89 E5 89 7D FC 8B 45 FC 0F AF C0 5D C3""")
@@ -52,4 +65,5 @@ page += OrderedList([
 ])
 
 
-__pages__ = [page]
+__pages__ = []
+# __pages__ = [page]
