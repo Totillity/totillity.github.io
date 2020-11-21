@@ -4,7 +4,7 @@ page = Page("jit-project/progress-timeline/week-1.html", nav_loc=["JIT Project",
 
 page += Title("Progress: Week 1")
 
-page += Paragraph("October 17, 2020 - October 24, 2020")
+page += Paragraph("October 17, 2020 - October 23, 2020")
 
 page += Heading("Goals For This Week")
 page += OrderedList([
