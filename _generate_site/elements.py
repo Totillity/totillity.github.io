@@ -5,6 +5,10 @@ from pathlib import Path
 from typing import List
 
 
+def bold(s: str) -> str:
+    return f"<b>{s}</b>"
+
+
 def italics(s: str) -> str:
     return f"<i>{s}</i>"
 
@@ -42,6 +46,15 @@ class Paragraph(Element):
 
     def render(self) -> str:
         return f'<div class="content-paragraph"><p>{self.text}</p></div>'
+
+
+class Paragraphs(Element):
+    def __init__(self, texts: str):
+        self.type = "Paragraphs"
+        self.paragraphs = [Paragraph(text) for text in texts.split("\n\n")]
+
+    def render(self) -> str:
+        return ''.join(paragraph.render() for paragraph in self.paragraphs)
 
 
 class Title(Element):

@@ -12,10 +12,10 @@ page += OrderedList([
     Paragraph('Create a basic Assembler based on the reading'),
 ])
 
-page += Heading("Journal For This Week")
+page += Heading("Mini-Journal For This Week")
 page += Paragraph(f"""
 The initial learning took a lot more effort than expected because no one on the internet can be bothered to make any 
-x86 or x64 tutorials for Windows. Everything has to be for linux, the superior operating system which 1.53% of systems use.
+x86 or x64 tutorials for Windows. Everything has to be for Linux, the superior operating system which 1.53% of systems use.
 """)
 
 page += Paragraph(f"""
@@ -31,7 +31,7 @@ usable by the computer. After a lot of googling and following the sources listed
 and have now built a working prototype assembler, with calling capabilities
 """)
 
-page += Paragraph("Sources:")
+page += Heading("Sources:")
 page += OrderedList([
     Paragraph(f"{hyperlink('x64 Instruction Reference', 'https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-instruction-set-reference-manual-325383.pdf')}"),
     Paragraph(f"{hyperlink('https://pyokagan.name/blog/2019-09-20-x86encoding/')}"),

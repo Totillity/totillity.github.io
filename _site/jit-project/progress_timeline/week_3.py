@@ -8,14 +8,9 @@ page += Paragraph("October 31, 2020 - November 6, 2020")
 
 page += Heading("Goals For This Week")
 page += OrderedList([
-])
-
-page += Heading("Journal For This Week")
-page += Paragraph(f"""
-""")
-
-page += Paragraph("Sources:")
-page += OrderedList([
+    Paragraph('Read up on IR designs'),
+    Paragraph('Look into what my IR will need'),
+    Paragraph('Design an IR to fulfill those needs'),
 ])
 
 __pages__ = [page]

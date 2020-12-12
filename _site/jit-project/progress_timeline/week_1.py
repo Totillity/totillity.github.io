@@ -12,7 +12,7 @@ page += OrderedList([
     Paragraph("Create a plan for how my JIT will work based on that."),
 ])
 
-page += Heading("Journal For This Week")
+page += Heading("Mini-Journal For This Week")
 page += Quote(
     "LuaJIT with the JIT enabled is much faster than all of the other languages benchmarked, including Wren, because Mike Pall is a robot from the future.",
     f"Bob Nystrom, {hyperlink('Wren Benchmarks', 'https://wren.io/performance.html')}"
@@ -60,7 +60,7 @@ Essentially, my plan for my JIT is that it will run normally with an interpreter
 that function only. This makes it a method JIT, since it doesn't trace that function.
 """)
 
-page += Paragraph("Sources:")
+page += Heading("Sources:")
 page += OrderedList([
     Paragraph(f"{hyperlink('http://lua-users.org/lists/lua-l/2010-03/msg00305.html')}"),
     Paragraph(f"{hyperlink('https://wren.io/performance.html')}"),
