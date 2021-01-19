@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Book</title>
+    
+        <link rel='stylesheet' href='../../style.css'>
+    
+</head>
+<body>
+    <div class="nav-bar">
+        <div id="nav-title-container">
+<!--            <div id="nav-title">Navigation</div>-->
+            <img src="/Logo.svg" id="nav-img">
+        </div>
+
+        <div class="nav-list">
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/index.html">Contents</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    
+                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-1-2" checked="checked">
+                    
+                    <div class="nav-bar-dropdown-container">
+                        <label class="nav-label" for="nav-checkbox-1-2">
+                            <span class="nav-dropdown-label-span">
+                                JIT Project
+                            </span>
+                        </label>
+                        <div class="nav-dropdown-content">
+                            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/about.html">About</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    
+                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-2-2" checked="checked">
+                    
+                    <div class="nav-bar-dropdown-container">
+                        <label class="nav-label" for="nav-checkbox-2-2">
+                            <span class="nav-dropdown-label-span">
+                                Progress Timeline
+                            </span>
+                        </label>
+                        <div class="nav-dropdown-content">
+                            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/timeline.html">Timeline</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-1.html">Week 1</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-2.html">Week 2</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-3.html">Week 3</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/journal-1.html">Journal 1</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-4.html">Week 4</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-5.html">Week 5</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-6.html">Week 6</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/week-7.html">Week 7</a>
+                
+                </div>
+            
+                <div class="nav-bar-item">
+                
+                    <a class="nav-link" href="/jit-project/progress-timeline/journal-2.html">Journal 2</a>
+                
+                </div>
+            
+                        </div>
+                    </div>
+                
+                </div>
+            
+                        </div>
+                    </div>
+                
+                </div>
+            
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="content">
+            <div class="content-title"><header>Journal 2: Weeks 4-7</header></div><hr><div class="content-paragraph"><p>November 7, 2020 - January 15, 2021</p></div><div class="content-heading">Goals for this Journal:</div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p>Implement the previous IR into my assembler</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Test that IR</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Ensure I fully implement the IR</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Look through current languages and see what I want mine to look like</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Based on my previous work, I can see what language design would lend itself best to JITing</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Design such a language</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Implement Parsing for the language</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Research better error handling and ast representation. Advisor could help a lot here.</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Learn how to do the above in C</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Implement a way to generate the IR from the frontend</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Out of all the steps so far, this is the most likely to either fail or work poorly.</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Therefore, also use this week to implement all the improvements and fixes I’ve thought of over the past 7 weeks</p></div></li></ol><div class="content-heading">Research</div><div class="content-paragraph"><p>
+<b>Note: all references labelled at the bottom.</b>
+<b>Note: I used code snippets instead of screenshots because this is a programming project.</b>
+<b>Note: I used pseudocode instead of actual C for the sake of clarity.</b></p></div><div class="content-paragraph"><p>Over these past four weeks of goals, my primary object was to get some sort of front-end for my assembly compiler working.
+I am proud to say that I have achieved that overarching goal.</p></div><div class="content-paragraph"><p>First, let me define what I mean by "front-end". Know that this isn't an exactly defined term. Everyone will have their own. 
+In my mind, I define a front-end as the code which transform text like "print(10)" into an IR, which I've defined in the previous journal.
+Parsing is the name of this task of converting raw text to a structure which represents a program (an IR).</p></div><div class="content-paragraph"><p>There are many different parsing techniques. LR Parser, Packrat parsing, Earley parser, the list is nearly endless (and linked to in the description).
+I've tried many of them, but I always return to Recursive descent parsers, because it is very simple and easy to extend,
+although also very limited. </p></div><div class="content-paragraph"><p>The concept of Recursive descent is simple. You take the file and split it into "tokens". A token is the smallest unit of text which
+logically fits together. I assign a type to each token, too. So, for example, "print 1 + foo.bar()" becomes:
+</p></div><div class="content-code"><pre>
+TOKEN(type="identifier", text="print")
+TOKEN(type="number", text="1")
+TOKEN(type="plus", text="+")
+TOKEN(type="identifier", text="foo")
+TOKEN(type="dot", text=".")
+TOKEN(type="identifier", text="bar")
+TOKEN(type="left parenthesis", text="(")
+TOKEN(type="right parenthesis", text=")")
+</pre></div><div class="content-paragraph"><p>
+The algorithm needed to do this tokenization step is not complex. Just look at the current character, decide what type of 
+token it must belong to, and eat a character until that token type must be done. For example, to tokenize an identifier:
+</p></div><div class="content-code"><pre>
+if (current_character is in "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+    // then we are looking at an identifier
+    identifier_text = "";
+    while (current_character is in "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ") {
+        add current_character to the end of identifier_text; 
+        current_character = next_character();
+    }
+    create_token(type="identifier", text=identifier_text);
+}
+</pre></div><div class="content-paragraph"><p>
+It is even simpler to tokenize anything else.</p></div><div class="content-paragraph"><p>We now have a list of tokens after apply this process to the whole file. The next step is, as I mentioned before,
+converting that list of tokens into an IR. Once again, this process is simple enough, though it might take a few tries
+to really wrap your head around. </p></div><div class="content-paragraph"><p>The best was to understand what a recursive descent parser does is to follow it as it works its magic. We start off at 
+'parse_file': 
+</p></div><div class="content-code"><pre>
+def parse_file() {
+    current_token = get_current_token();
+    while (current_token.type is not END_OF_FILE) {
+        // when we reach the end of the file (which is when we know to stop), the tokenizer will emit an END_OF_FILE token
+        // therefore, when we reach that token in the parser, we know to stop parsing
+
+        if (current_token.type == "def") {
+            // if we see a "def" token, which always means a function definition always follows
+            // therefore, goto a function which can parse that function
+            parse_function();
+        } else (current_token.type == "class") {
+            // if we see a "class" token, which always means a class definition always follows
+            // therefore, goto a function which can parse that class
+            parse_class();
+        } else {
+            // we see something weird, so yell about it
+            show_error_and_quit("Expected a def or class");
+        }
+    }
+}
+</pre></div><div class="content-paragraph"><p>
+The key insight (or trick, depending on your perspective) of Recursive descent parsers is that you can always know what
+to do given just one token. If you take Python, for example, when you see "def", you always know that a function is going to follow that "def".
+This means a Recursive descent parser doesn't have to do anything weird like going backwards when its made a mistake or
+maintaining a stack to account for all possibilities. In a Recursive descent parser, it <i>cannot make a mistake</i>.
+Of course, this comes at the cost of designing a language such that you can always know what follows from just one token.
+This influenced a lot of Python and related language's designs. If you take Haskell, which uses a much more advanced parser,
+you can see how the flexibility offered by that parser afforded much more flexibility and complexity in the language design.  </p></div><div class="content-paragraph"><p>Anyways, onto the code for parse_function():
+</p></div><div class="content-code"><pre>
+def parse_function() {
+    expect_token("def");
+    // What does "expect_token()" do, you might ask?      
+    // if the current token is a "def" token, move the token list forwards by one, 
+    //   so the next current_token is the token after the def token, then return the "def" token
+    // if the current token is not a "def" token, show an error and quit
+
+    function_name = expect_token("identifier");
+
+    expect_token("left parenthesis");
+    // parse the arguments ...
+    // boring and confusing code, honestly
+    expect_token("right parenthesis");
+
+    expect_token("left brace");
+    while (next_token() is not "right_brace") {
+        parse_statement();
+    }
+    expect_token("right brace");
+}
+</pre></div><div class="content-paragraph"><p>
+Most pretty standard code. Once again, we go into an inner function. See where the "recursive" part of recursive descent comes from?
+</p></div><div class="content-code"><pre>
+def parse_statement() {
+    current_token = current_token();
+    if (current_token.type == "return") {
+        parse_return();
+    } else if (current_token.type == "let") {
+        parse_let();
+    } else if (current_token.type == "if") {
+        parse_if();
+    } 
+    // ... snip ...
+    } else {
+        // we see something weird, so yell about it
+        show_error_and_quit("Expected a statement");
+    }
+}
+</pre></div><div class="content-paragraph"><p>
+Looks a bit like the inside of the loop of from parse_file, expect with different expected tokens and functions. Once again,
+we use the insight that if we see a "return", then the next few tokens <i>must</i> be part of a return statement. Let's
+examine the code that parses the return statement. Trust me, we're almost at the most interesting part.
+</p></div><div class="content-code"><pre>
+def parse_return() {
+    expect_token("return");
+    expr = parse_expression();
+}
+</pre></div><div class="content-paragraph"><p>
+The most complicated part of a Recursive descent parser lies in that unassuming function call: "parse_expression".</p></div><div class="content-paragraph"><p>What's an expressions? Stuff like "a+b" or "foo.bar()". The weirdest part of expressions is how nested they can become.
+"1" is technically a complete expression. However, "1 * 3" is also an expression, which is made up of two smaller expressions,
+"1" and "2", and a relation between them, "*". </p></div><div class="content-paragraph"><p>The real difficulty here is seen in the expression "1 + 3 * 2". If you strictly parsed them in order as we have done is all the
+above code snippets, you'd get a IR which said to first add 1 and 3, then multiply 2 to the result of that, to get 8.
+This is clearly wrong to anyone who's done any math. We really should multiply 3 and 2 first, then add 1 to the result, to get 7.
+However, to do so, we would need to parse in an order different from first to last. </p></div><div class="content-paragraph"><p>Recursive descent parsers have a method of dealing with this. We create a different function for each level of precedence (so,
+a function for all addition and subtraction, a function for all multiplication, and so on for all other expressions in you language).
+Each level first immediately delegates to the level below, then tries it's level. As an example: 
+</p></div><div class="content-code"><pre>
+def parse_expression() {
+    // in this example, expressions aren't very complicated, so immediately delegate to addition
+    return parse_addition();
+}
+
+def parse_addition() {
+    expr = parse_multiplication()
+
+    while (next_token is "+" or "-") {
+        if (next_token is "+") {
+            expect("+");
+            right = parse_multiplication();
+            expr = add(expr, right);
+        } else if (next_token is "-") {
+            expect("-");
+            right = parse_multiplication();
+            expr = sub(expr, right);
+        }
+    }
+    return expr;
+}
+
+def parse_multiplication() {
+    expr = parse_terminal();
+    // parse_terminal just returns a identifier or number if it exists
+
+    while (next_token is "*" or "/") {
+        if (next_token is "*") {
+            expect("*");
+            right = parse_terminal();
+            expr = mul(expr, right);
+        } else if (next_token is "/") {
+            expect("/");
+            right = parse_terminal();
+            expr = div(expr, right);
+        }
+    }
+    return expr;
+}
+</pre></div><div class="content-paragraph"><p>
+Let's try following what this code will do given "1 + 2 * 3".
+</p></div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_expression goes to parse_addition</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_addition goes to parse_multiplication</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication goes to parse_terminal</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_terminal return 1</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication doesn't see a * or /, so it returns just the 1</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication does see a +, so it takes the + and goes back into parse_multiplication</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication goes to parse_terminal</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_terminal return 2</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication does see a *, so it takes the * and goes back into parse_terminal</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_terminal return 3</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication combines the 2 and 3 into (2 * 3)</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_multiplication doesn't see a * or /, so it returns the (2 * 3)</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_addition combines the 1 and (2 * 3) into (1 + (2 * 3))</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>parse_addition doesn't see a + or -, so it returns the (1 + (2 * 3))</p></div></li></ol><div class="content-paragraph"><p>
+As you can see, we've got the expression with the right precedence. You can give it any expression and see that it comes to the correct result.
+It handles everything right, even case of repeated addition like "1 + 2 + 3", where the correct order is "(1 + 2) + 3".</p></div><div class="content-paragraph"><p>This is the basics of a Recursive descent parser. With this basis, we can parse nearly anything. This is also how my front-end works.
+In each of the above functions, it also includes the code to emit the right IR as it goes, so I can generate IR from text now.
+That IR can be pumped directly into the compiler my last Journal was about, so the first half of my project is now done. 
+</p></div><div class="content-heading">Reflection</div><div class="content-paragraph"><p>
+I didn't do nearly as much as I wanted to over break. I also couldn't make this journal nearly as nice as I wanted. This 
+one uses way more specific terminology than I wanted, and assumes a greater understanding of coding with the pseudo-code.
+I hope it's still accessible. I also spent way too much trying to figure out how to include a screenshot or something like it,
+which is part of the reason my journal is so late.</p></div><div class="content-paragraph"><p>Going forward, things are looking much brighter. All my previous work is on ground I've tread many times before. Everything
+that I've yet to work on is new, so you can look forward to actual research sections and much more lively prose.
+</p></div><div class="content-heading">Main Accomplishments</div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p>Created lexer (tokenizer)</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Created parser</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Solved assign problem which bugged me for a while (solution: pass an lvalue flag)</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Hooked parser and compiler together, they work mostly fine</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Improved the structure of the compiler code</p></div></li></ol><div class="content-heading">Sources:</div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://en.wikipedia.org/wiki/Category:Parsing_algorithms">Wikipedia's list of parsing algorithms</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://lark-parser.readthedocs.io/en/latest/">Another method of parsing I experimented with back in the day</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="http://www.craftinginterpreters.com/parsing-expressions.html">My primary resource on Recursive descent</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://www.haskell.org/">Haskell homepage, where you can see the differences in language</a></p></div></li></ol><div class="content-end"></div>
+        </div>
+    </div>
+    <div class="right-content"></div>
+</body>
+</html>
