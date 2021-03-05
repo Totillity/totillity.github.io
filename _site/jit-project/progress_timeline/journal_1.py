@@ -1,6 +1,6 @@
 from _generate_site.elements import *
 
-page = Page("jit-project/progress-timeline/journal-1.html", nav_loc=["JIT Project", "Progress Timeline", "[4] Journal 1"])
+page = Page("jit-project/progress-timeline/journal-1.html", nav_loc=["JIT Project", "Progress Timeline", "[2] Journal 1"])
 
 page += Title("Journal 1: Weeks 1-3")
 

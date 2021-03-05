@@ -20,7 +20,7 @@ def hyperlink(s: str, link_to: str = None) -> str:
 
 
 def inline_code(s: str) -> str:
-    return f"<code>{s}</code>"
+    return f'<span class="nowrap"><code>{s}</code></span>'
 
 
 class Element:

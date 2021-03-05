@@ -11,36 +11,43 @@
     {% endif %}
 </head>
 <body>
-    <div class="nav-bar">
-        <div id="nav-title-container">
-<!--            <div id="nav-title">Navigation</div>-->
-            <img src="/Logo.svg" id="nav-img">
-        </div>
+    <div class="nav-bar-side">
+        <input type="checkbox" class="nav-bar-side-checkbox" id="nav-bar-side-button">
+        <label class="nav-bar-side-label" for="nav-bar-side-button">
+            <span class="nav-bar-side-label-span">
+            </span>
+        </label>
+        <div class="nav-bar">
+            <div id="nav-title-container">
+    <!--            <div id="nav-title">Navigation</div>-->
+                <img src="/Logo.svg" id="nav-img">
+            </div>
 
-        <div class="nav-list">
-            {% for node in nav_tree.children recursive %}
-                <div class="nav-bar-item">
-                {% if not node.is_leaf %}
-                    {% if page_path in node.reachable %}
-                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}" checked="checked">
-                    {% else %}
-                        <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}">
-                    {% endif %}
-                    <div class="nav-bar-dropdown-container">
-                        <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{{loop.index}}">
-                            <span class="nav-dropdown-label-span">
-                                {{node.nav_name}}
-                            </span>
-                        </label>
-                        <div class="nav-dropdown-content">
-                            {{loop(node.children)}}
+            <div class="nav-list">
+                {% for node in nav_tree.children recursive %}
+                    <div class="nav-bar-item">
+                    {% if not node.is_leaf %}
+                        {% if page_path in node.reachable %}
+                            <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}" checked="checked">
+                        {% else %}
+                            <input type="checkbox" class="nav-checkbox" id="nav-checkbox-{{loop.depth}}-{{loop.index}}">
+                        {% endif %}
+                        <div class="nav-bar-dropdown-container">
+                            <label class="nav-label" for="nav-checkbox-{{loop.depth}}-{{loop.index}}">
+                                <span class="nav-dropdown-label-span">
+                                    {{node.nav_name}}
+                                </span>
+                            </label>
+                            <div class="nav-dropdown-content">
+                                {{loop(node.children)}}
+                            </div>
                         </div>
+                    {% else %}
+                        <a class="nav-link" href="/{{node.path}}">{{node.nav_name}}</a>
+                    {% endif%}
                     </div>
-                {% else %}
-                    <a class="nav-link" href="/{{node.path}}">{{node.nav_name}}</a>
-                {% endif%}
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="content-container">

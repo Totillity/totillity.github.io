@@ -5,21 +5,21 @@
 html, body {
     display: flex;
     height: 100%;
-    /*width: 100%;*/
 
     border: 0;
     margin: 0;
+}
 
+body {
+    width: 100%;
     overflow-y: scroll;
+    background-color: #fcfcfc;
 }
 
 .content-container {
-    margin-left: 15vw;
-    width: 70vw;
+    margin-left: 200px;
+    width: calc(100vw - 300px);
     float: left;
-    padding: 0 20px 20px 20px;
-
-    background-color: #fcfcfc;
 }
 
 .content {
@@ -38,6 +38,10 @@ html, body {
     font-size: 0.9em;
     padding: 2px 3px;
     border-radius: 6px;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 .content-title {
@@ -84,7 +88,7 @@ html, body {
 
 .content-code {
     background-color: dimgray;
-    padding: 10px 5px;
+    padding: 6px 5px 0 5px;
     margin: 5px auto;
     font-size: 1.075em;
     border: 0 solid blue;
@@ -98,7 +102,30 @@ html, body {
     font-family: monospace;
     color: white;
     margin: 5px 0;
-    overflow: auto;
+
+    overflow-x: scroll;
+}
+
+.content-code pre::-webkit-scrollbar {
+    width: 20px;
+    height: 11px;
+}
+
+.content-code pre::-webkit-scrollbar-button {
+    display: none;
+}
+
+.content-code pre::-webkit-scrollbar-track {
+    display: none;
+}
+
+.content-code pre::-webkit-scrollbar-thumb {
+    background-color: rgb(50, 50, 50);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border-width: 4px 0 4px 0;
+    border-style: solid;
+    border-color: transparent;
 }
 
 .content-end {
@@ -107,7 +134,7 @@ html, body {
 }
 
 .nav-bar {
-    width: 15vw;
+    width: 200px;
     float: left;
 
     margin: 0;
@@ -115,6 +142,8 @@ html, body {
     position: fixed;
 
     background-color: rgb(100, 100, 100);
+
+    transition: transform 0.5s ease;
 }
 
 #nav-img {
@@ -242,28 +271,111 @@ html, body {
     max-height: none;
 }
 
+.nav-bar-side {
+    width: 0;
+}
+
+.nav-bar-side-checkbox {
+    float: left;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.nav-bar-side-label {
+    float: left;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(100, 100, 100);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.5s ease;
+}
+
+.nav-bar-side-label-span::before {
+    content: "\27E9";
+    font-size: 50px;
+    color: white;
+    display: inline-block;
+    transition: 0.4s;
+    padding-left: 2px;
+    padding-right: 3px;
+}
+
+.nav-bar-side-checkbox:checked ~ .nav-bar-side-label > .nav-bar-side-label-span::before {
+    content: "\27E8";
+}
+
+.nav-bar-side-checkbox:checked ~ .nav-bar {
+    transform: translateX(0);
+    /*visibility: visible;*/
+}
+
+.nav-bar-side-checkbox:checked  ~ .nav-bar-side-label {
+    transform: translateX(calc(100vw - 75px));
+}
 
 .right-content {
-    width: 15vw;
+    width: 100px;
     float: left;
 
-    margin-left: 85vw;
+    margin-left: calc(100% - 100px);
     height: 100%;
     position: fixed;
 
     background-color: #f0f0f0;
 }
 
+@media screen and (max-width: 1150px) {
+    .content {
+        width: 75%;
+    }
+}
 
-@media screen and (max-width: 950px) {
-    .content-paragraph {
-        width: 360px;
+@media screen and (max-width: 600px) {
+    .nav-bar {
+        width: calc(100vw - 75px);
+        transform: translateX(-100%);
+        position: absolute;
+        background-color: #fcfcfc;
     }
 
-    .content-code {
-        width: 360px;
+    #nav-title-container {
+        width: 70%;
+        height: auto;
+        text-align: initial;
+        padding-bottom: 0;
+        margin: 0 auto;
     }
-    .content-code pre {
-        width: 360px;
+
+    .nav-bar-side {
+        width: 75px;
+        height: 100%;
+        float: left;
+        position: fixed;
+        background-color: rgb(100, 100, 100);
+    }
+
+    .content-container {
+        margin-left: 75px;
+        width: calc(100% - 75px);
+    }
+
+    .content-title {
+        margin-top: 35px;
+        font-size: 35px;
+    }
+
+    .content-ordered-list {
+        padding-left: 20px;
+        overflow-wrap: break-word;
+    }
+
+    .right-content {
+        width: 0;
     }
 }

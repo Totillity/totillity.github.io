@@ -30,7 +30,7 @@ def get_pages(files: List[IO]) -> List[Page]:
         text = file.read()
         mod_globals = {}
         exec(text, mod_globals)
-        to_render.extend(mod_globals['__pages__'])
+        to_render.extend(mod_globals.get('__pages__', []))
     return to_render
 
 
