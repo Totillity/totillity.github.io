@@ -8,6 +8,10 @@ html, body {
 
     border: 0;
     margin: 0;
+
+    --full-nav-bar-width: 250px;
+    --full-right-bar-width: 100px;
+    --nav-bar-label-width: 75px;
 }
 
 body {
@@ -17,8 +21,8 @@ body {
 }
 
 .content-container {
-    margin-left: 200px;
-    width: calc(100vw - 300px);
+    margin-left: var(--full-nav-bar-width);
+    width: calc(100vw - var(--full-nav-bar-width) - var(--full-right-bar-width));
     float: left;
 }
 
@@ -149,8 +153,9 @@ body {
 
 .nav-bar-side-label {
     float: left;
-    width: 75px;
+    width: var(--nav-bar-label-width);
     height: 100%;
+    visibility: hidden;
     background-color: rgb(100, 100, 100);
 
     display: flex;
@@ -187,14 +192,15 @@ body {
 /*}*/
 
 .nav-bar {
-    width: 200px;
+    width: var(--full-nav-bar-width);
     float: left;
 
     margin: 0;
     height: 100%;
     position: fixed;
 
-    background-color: rgb(100, 100, 100);
+    /*background-color: rgb(100, 100, 100);*/
+    border-right: 3px solid rgb(100, 100, 100);
 
     transition: transform 0.5s ease;
 }
@@ -325,7 +331,7 @@ body {
 }
 
 .right-content {
-    width: 100px;
+    width: var(--full-right-bar-width);
     float: left;
 
     margin-left: calc(100% - 100px);
@@ -342,10 +348,12 @@ body {
 }
 
 @media screen and (max-width: 600px) {
+    .content {
+        width: 90%;
+    }
+
     .nav-bar {
-        width: calc(100vw - 75px);
-        /*transform: translateX(-100%);*/
-        /*position: absolute;*/
+        width: calc(100vw - var(--nav-bar-label-width));
         background-color: #fcfcfc;
         position: static;
     }
@@ -363,14 +371,19 @@ body {
         height: 100%;
         float: left;
         position: fixed;
+
         background-color: rgb(100, 100, 100);
 
-        transform: translateX(calc(75px - 100vw - 1px));
+        transform: translateX(calc(var(--nav-bar-label-width) - 100vw - 1px));
+    }
+
+    .nav-bar-side-label{
+        visibility: visible;
     }
 
     .content-container {
-        margin-left: 75px;
-        width: calc(100% - 75px);
+        margin-left: var(--nav-bar-label-width);
+        width: calc(100% - var(--nav-bar-label-width));
     }
 
     .content-title {
