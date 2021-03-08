@@ -360,7 +360,7 @@ identical effects, but differing times.
 First case: my JIT without optimization. The code I handed the JIT was this:
 </p></div><div class="content-code"><pre>
 def main(a1) {
-    let a2 =  other(a1);
+    let a2 =  a1  + 3;
     let a3 =  a2  + 3;
     let a4 =  a3  + 3;
     let a5 =  a4  + 3;
@@ -373,15 +373,90 @@ def main(a1) {
     let a12 = a11 + 3;
     return    a12 + 3;
 }
-
-def other(a2) {
-    return a2 + 3;
-}
 </pre></div><div class="content-paragraph"><p>
-The assembly code generated was: 
+Below is the generated assembly code, in the encoded and textual forms: 
 </p></div><div class="content-code"><pre>
 5148baf01609000000000048b9401509000000000048b8b8184100000000004883ec20ffd04883c4204889c0594889c94883ec20ffd04883c4204889c048b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c848b903000000000000004801c8c3
-</pre></div><div class="content-heading">Reflection</div><div class="content-paragraph"><p></p></div><div class="content-paragraph"><p></p></div><div class="content-heading">Main Accomplishments</div><ol class="content-ordered-list"></ol><div class="content-heading">Sources:</div><ol class="content-ordered-list"></ol><div class="content-end"></div>
+
+mov rax,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+mov rcx,0x3
+add rax,rcx
+ret
+</pre></div><div class="content-paragraph"><p>
+This is 205 bytes long. The code takes an average of 6 nanoseconds to execute. 
+</p></div><div class="content-paragraph"><p>
+When optimizations are turned on, the following assembly is generated: 
+</p></div><div class="content-code"><pre>
+4889c80424c3
+
+mov rax,rcx
+add al,0x24
+ret
+</pre></div><div class="content-paragraph"><p>
+This is 6 bytes long. The code takes an average of 4 nanoseconds to execute. Although the code-size reduction is obviously 
+impressive, the speed improvement doesn't look as impressive. In reality, that the code is probably even faster than it
+appears because the overhead from the timing function. Additionally, many professional teams would sell their souls for
+just a 10% improvement in their JIT speed-ups, sp a 33% improvement is very important. However, these numbers don't have any
+meaning if this is actually 1000% slower than the alternatives to my JIT. So, let's look at the numbers for Python.
+</p></div><div class="content-paragraph"><p>
+I've written the following Python code, which does the exact same task the code for the JIT does:
+</p></div><div class="content-code"><pre>
+def main(a1):
+    a2 =   a1  + 3
+    a3 =   a2  + 3
+    a4 =   a3  + 3
+    a5 =   a4  + 3
+    a6 =   a5  + 3
+    a7 =   a6  + 3
+    a8 =   a7  + 3
+    a9 =   a8  + 3
+    a10 =  a9  + 3
+    a11 =  a10 + 3
+    a12 =  a11 + 3
+    return a12 + 3
+</pre></div><div class="content-paragraph"><p>
+This code takes an average of 1663 nanoseconds to execute a single iteration of the function. This means that my full 
+JIT with optimizations is a 99.76% speed-up, or a 415.75x speed-up. All of these are excellent numbers, in my estimation,
+so I'd say I'm doing pretty well.
+</p></div><div class="content-heading">Reflection</div><div class="content-paragraph"><p>
+Most of the work I did on the optimizations was done over the course of a week where I didn't have much to do for other
+classes, except for 3 essays for AP Euro which I've since turned in. This gives me hope that I can fit work on my Senior
+Project into my otherwise busy schedule.</p></div><div class="content-paragraph"><p>This is definitely the most fun I've had writing a journal, which is why its so much longer than the previous ones,
+and why it's slightly delayed. Even with all this text, I still haven't covered everything I wanted to. I'm working on an 
+addendum like the <a href="/jit-project/about.html">About</a> page, except covering the clever? way I've found to make
+Dead Code Elimination come for free and Register Allocation significantly smarter (hint: go through the SSA-form IR backwards).</p></div><div class="content-paragraph"><p>I'm not entirely sure what my future work on my project looks like. There's the obvious steps, like make the JIT usable
+with support for loops, data types, and objects. Of course, once I implement those, I can get to the JIT parts of my JIT,
+since support for those features was why JITs were invented. </p></div><div class="content-paragraph"><p>However, the hopes for Python integration look like a lot of extra work now that I've looked into parsing support more. 
+The Python -> JIT step would be easy is there was any way to get Python parsing outside of Python. And if I have to lug 
+the entire Python Binary and Standard Library just to get interop with it, what's the point? </p></div><div class="content-paragraph"><p>The really challenging parts of my project would be bringing it to a professional quality and giving it a Standard Library.
+Both are some of the dullest things to do, but also the most important parts if you want public support for a programming
+language implementation. It seems I won't do them though, because it would honestly be a pretty dumb to invest 3+ years of work
+into a learning project. I don't want anyone to use this language. Already, I know things I'd do different if I was just
+starting this project, like the choice of programming language.</p></div><div class="content-paragraph"><p>So, my standard for the completion of this project is if I can make it again in itself, which is a fairly common standard 
+for programming language projects. I believe this will be an achievable, if challenging, goal.</p></div><div class="content-paragraph"><p>P.S. I added a usable mobile interface for this site if you want to check it out. Improvement coming there soon based on the
+feedback of an unnamed student.
+</p></div><div class="content-heading">Main Accomplishments</div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p>Added JIT wrapper</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Instruction Selection Optimization</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Added subtract and function calls</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Added Constant Folding</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Added memory management</p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p>Refactored code to facilitate further development</p></div></li></ol><div class="content-heading">Sources:</div><ol class="content-ordered-list"><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://www.intel.com/content/dam/www/public/us/en/documents/manuals/64-ia-32-architectures-software-developer-instruction-set-reference-manual-325383.pdf">x64 Instruction Reference</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://pyokagan.name/blog/2019-09-20-x86encoding/">Reference on x64 encoding #1</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="http://ref.x86asm.net/geek64.html">Reference on x64 encoding #2</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://wiki.osdev.org/X86-64_Instruction_Encoding">Reference on x64 encoding #3</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://en.wikipedia.org/wiki/Constant_folding">Wikipedia explaining the principles behind constant folding</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://en.wikipedia.org/wiki/Dead_code_elimination">Wikipedia explaining the principles behind Dead Code Elimination</a></p></div></li><li class="content-ordered-list-item"><div class="content-paragraph"><p><a href="https://en.wikipedia.org/wiki/Instruction_selection">Wikipedia explaining the principles behind Instruction Emission</a></p></div></li></ol><div class="content-end"></div>
         </div>
     </div>
     <div class="right-content"></div>
