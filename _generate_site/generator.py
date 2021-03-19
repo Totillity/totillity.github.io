@@ -112,11 +112,33 @@ def render_page(env: jinja2.Environment, page: Page, tree: NavTree):
     ))
 
 
+def destroy_dir(dir: Path, preserve: List[Path], actually_delete: bool):
+    for item in dir.iterdir():
+        if item in preserve or item.name.startswith("_") or item.name.startswith("."):
+            continue
+        else:
+            if item.is_dir():
+                destroy_dir(item, preserve, actually_delete)
+            else:
+                if actually_delete:
+                    item.unlink()
+                else:
+                    print(f" | {item}")
+    if actually_delete:
+        try:
+            dir.rmdir()
+        except OSError:
+            pass
+    else:
+        print(f" | {dir}")
+
+
 def main():
     argparser = argparse.ArgumentParser("site renderer")
     argparser.add_argument("files", nargs="*", type=argparse.FileType("r"))
     argparser.add_argument("-I", "--include-dir", type=Path, action="append")
     argparser.add_argument("-D", "--dest-dir", type=Path)
+    argparser.add_argument("-P", "--preserve", type=Path, action="append")
 
     parsed = argparser.parse_args()
     files = []
@@ -124,6 +146,14 @@ def main():
     for dir in parsed.include_dir:
         files.extend(path.open("r") for path in dir.glob("**/*.py"))
     pages = get_pages(files)
+
+    dest: Path = parsed.dest_dir
+    print("Would Delete Files: ")
+    destroy_dir(dest, parsed.preserve, False)
+    print("Delete these files? (y/n)")
+    inp = input(">>> ")
+    if inp in ("y", "Y", "yes"):
+        destroy_dir(dest, parsed.preserve, True)
 
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("_templates"),
