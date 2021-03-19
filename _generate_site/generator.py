@@ -1,27 +1,14 @@
 from __future__ import annotations
 
 import argparse
-from typing import List, IO, Dict, Any, Tuple
-from pathlib import Path, PosixPath
+from typing import List, IO, Tuple
+from pathlib import Path
 from os.path import relpath
 import re
 
 import jinja2
 
 from _generate_site.elements import Page
-
-
-def get_files() -> List[IO]:
-    argparser = argparse.ArgumentParser("site renderer")
-    argparser.add_argument("file", nargs="*", type=argparse.FileType("r"))
-    argparser.add_argument("--dir", nargs="*", type=str)
-
-    parsed = argparser.parse_args()
-    files = []
-    files.extend(parsed.file)
-    for dir in parsed.dir:
-        files.extend(path.open("r") for path in Path(dir).glob("**/*.py"))
-    return files
 
 
 def get_pages(files: List[IO]) -> List[Page]:
@@ -35,8 +22,7 @@ def get_pages(files: List[IO]) -> List[Page]:
 
 
 class NavNode:
-    # noinspection RegExpRedundantEscape
-    order_regex = re.compile(r"\[[0-9]+\]")
+    order_regex = re.compile(r"\[[0-9]+]")
 
     def __init__(self, nav_name: str, nav_order: int, is_leaf: bool):
         self.nav_name = nav_name
@@ -127,7 +113,17 @@ def render_page(env: jinja2.Environment, page: Page, tree: NavTree):
 
 
 def main():
-    pages = get_pages(get_files())
+    argparser = argparse.ArgumentParser("site renderer")
+    argparser.add_argument("files", nargs="*", type=argparse.FileType("r"))
+    argparser.add_argument("-I", "--include-dir", type=Path, action="append")
+    argparser.add_argument("-D", "--dest-dir", type=Path)
+
+    parsed = argparser.parse_args()
+    files = []
+    files.extend(parsed.files)
+    for dir in parsed.include_dir:
+        files.extend(path.open("r") for path in dir.glob("**/*.py"))
+    pages = get_pages(files)
 
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("_templates"),
