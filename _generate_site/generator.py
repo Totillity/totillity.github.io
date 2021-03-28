@@ -112,13 +112,17 @@ def render_page(env: jinja2.Environment, page: Page, tree: NavTree):
     ))
 
 
-def destroy_dir(dir: Path, preserve: List[Path], actually_delete: bool):
+def destroy_dir(dir: Path, preserve: List[Path], actually_delete: bool) -> bool:
+    any_left = False
     for item in dir.iterdir():
         if item in preserve or item.name.startswith("_") or item.name.startswith("."):
+            any_left = True
             continue
         else:
             if item.is_dir():
-                destroy_dir(item, preserve, actually_delete)
+                any_survive = destroy_dir(item, preserve, actually_delete)
+                if any_survive:
+                    any_left = True
             else:
                 if actually_delete:
                     item.unlink()
@@ -130,7 +134,9 @@ def destroy_dir(dir: Path, preserve: List[Path], actually_delete: bool):
         except OSError:
             pass
     else:
-        print(f" | {dir}")
+        if not any_left:
+            print(f" | {dir}")
+    return any_left
 
 
 def main():
