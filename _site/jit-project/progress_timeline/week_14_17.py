@@ -1,6 +1,6 @@
 from _generate_site.elements import *
 
-page = Page("jit-project/progress-timeline/week-14-16.html", nav_loc=["JIT Project", "Progress Timeline", "[7] Weeks 14 to 16"])
+page = Page("jit-project/progress-timeline/week-14-17.html", nav_loc=["JIT Project", "Progress Timeline", "[7] Weeks 14 to 17"])
 
 page += Title("Progress: Week 14")
 
@@ -34,6 +34,17 @@ page += OrderedList([
     Paragraph("Implement Objects"),
     Paragraph("Implement Attribute Access and 'Setting'"),
     Paragraph("Research and Implement optimizations which can be done with Types"),
+])
+
+page += Title("Progress: Week 17")
+
+page += Paragraph("March 28, 2021 - April 3, 2021")
+
+page += Heading("Goals For This Week")
+page += OrderedList([
+    Paragraph("Implement Nan-Boxing"),
+    Paragraph("Implement Dynamic Type Checks"),
+    Paragraph("Implement some of those researched optimizations"),
 ])
 
 __pages__ = [page]
