@@ -1,6 +1,6 @@
 from _generate_site.elements import *
 
-page = Page("jit-project/progress-timeline/week-14-17.html", nav_loc=["JIT Project", "Progress Timeline", "[7] Weeks 14 to 17"])
+page = Page("jit-project/progress-timeline/week-14-15.html", nav_loc=["JIT Project", "Progress Timeline", "[7] Weeks 14 to 15"])
 
 page += Title("Progress: Week 14")
 
@@ -23,28 +23,6 @@ page += OrderedList([
     Paragraph("Implement Blocks"),
     Paragraph("Implement While-statements"),
     Paragraph(f"Create Instruction Emission Optimizations for everything implemented over these two weeks, like {inline_code('xor rax, rax')} over {inline_code('mov rax, 0')}"),
-])
-
-page += Title("Progress: Week 16")
-
-page += Paragraph("March 21, 2021 - March 27, 2021")
-
-page += Heading("Goals For This Week")
-page += OrderedList([
-    Paragraph("Implement Objects"),
-    Paragraph("Implement Attribute Access and 'Setting'"),
-    Paragraph("Research and Implement optimizations which can be done with Types"),
-])
-
-page += Title("Progress: Week 17")
-
-page += Paragraph("March 28, 2021 - April 3, 2021")
-
-page += Heading("Goals For This Week")
-page += OrderedList([
-    Paragraph("Implement Nan-Boxing"),
-    Paragraph("Implement Dynamic Type Checks"),
-    Paragraph("Implement some of those researched optimizations"),
 ])
 
 __pages__ = [page]
