@@ -93,7 +93,11 @@ def main() {
 """)
 
 page += Paragraphs(f"""
-This is a much more general system than javascript's system, which 
+This is a much more general system than JavaScript's system and can therefore do anything JavaScript can do. The usage of
+that will be clear when we get to transpilation.
+
+Implementing objects was fairly straightforward. As I've mentioned before, underneath the hood, they are just dictionaries,
+which I had already implemented earlier in order to support variables.
 """)
 
 page += Heading("Main Accomplishments")
