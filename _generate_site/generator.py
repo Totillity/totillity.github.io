@@ -14,7 +14,7 @@ from _generate_site.elements import Page
 def get_pages(files: List[IO]) -> List[Page]:
     to_render = []
     for file in files:
-        text = file.read()
+        text = file.read().decode(encoding="utf-8", errors="ignore")
         mod_globals = {}
         exec(text, mod_globals)
         to_render.extend(mod_globals.get('__pages__', []))
@@ -150,7 +150,7 @@ def main():
     files = []
     files.extend(parsed.files)
     for dir in parsed.include_dir:
-        files.extend(path.open("r") for path in dir.glob("**/*.py"))
+        files.extend(path.open("rb") for path in dir.glob("**/*.py"))
     pages = get_pages(files)
 
     dest: Path = parsed.dest_dir
